@@ -1,0 +1,26 @@
+function [ mut_strat_test ] = create_random_strategy( param_range,random_guy_sensors )
+param_range_width = param_range(:,3) - param_range(:,1);
+ 
+% then make strategy
+random_sensor = find(random_guy_sensors ==1);
+if random_sensor == 1 % only-nutrient sensor
+    mut_strat_test = [rand*param_range_width(1)+param_range(1,1)...
+        (rand*param_range_width(2)+param_range(2,1)) ...
+        (rand*param_range_width(3)+param_range(3,1)), 0,param_range(5,1), 0, param_range(7,1), 0, param_range(9,1)]; % I make sure the thresholds are inside the allowed range evene for non-active sensor-modes
+elseif random_sensor == 2 % only opp toxin sensor
+    mut_strat_test = [rand*param_range_width(1)+param_range(1,1), 0, param_range(3,1) ...
+        (rand*param_range_width(4)+param_range(4,1)) ...
+        (rand*param_range_width(5)+param_range(5,1)), 0,param_range(7,1), 0, param_range(9,1)];
+elseif random_sensor == 3 % only self toxin sensor
+    mut_strat_test = [rand*param_range_width(1)+param_range(1,1), 0, param_range(3,1), 0, param_range(5,1), ...
+        (rand*param_range_width(6)+param_range(6,1)) ...
+        (rand*param_range_width(7)+param_range(7,1)),0,param_range(9,1)];
+else % only QS sensor
+    mut_strat_test = [rand*param_range_width(1)+param_range(1,1), 0,param_range(3,1), 0, param_range(5,1), 0, param_range(7,1), ...
+        (rand*param_range_width(8)+param_range(8,1)) ...
+        (rand*param_range_width(9)+param_range(9,1))];
+end
+ 
+ 
+end
+ 
