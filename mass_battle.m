@@ -20,7 +20,7 @@ random_guy_sensors = [1 1 0 1]; % [Nu TB TA QS]
  
 % independent repeats of turnament (allows running more)
 alg_num1 = 1;
-alg_num2 = 3;
+alg_num2 = 5;
 % number of evolution rounds (allows extending runs)
 startround = 1;
 endround = 50;
